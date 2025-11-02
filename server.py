@@ -32,16 +32,16 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Приведение к списку файлов всегда
 if db_type == "parking":
-    file_paths = [os.path.join(BASE_DIR, "../../objects/parking.txt")]
+    file_paths = [os.path.join(BASE_DIR, "../objects/parking.txt")]
 elif db_type == "raillight":
-    file_paths = [os.path.join(BASE_DIR, f"../../objects/raillight_{i}.txt") for i in range(1, 5)]
+    file_paths = [os.path.join(BASE_DIR, f"../objects/raillight_{i}.txt") for i in range(1, 5)]
 elif db_type == "crossroad":
-    file_paths = [os.path.join(BASE_DIR, "../../objects/crossroad.txt")]
+    file_paths = [os.path.join(BASE_DIR, "../objects/crossroad.txt")]
 else:
     raise ValueError(f"Unknown db type: {db_type}")
 
 # Абсолютный путь к фронтенду
-front_path = os.path.abspath(os.path.join(BASE_DIR, "../../pages"))
+front_path = os.path.abspath(os.path.join(BASE_DIR, "../pages"))
 
 
 
