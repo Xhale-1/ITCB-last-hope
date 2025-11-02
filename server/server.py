@@ -139,6 +139,7 @@ class FileChangeHandler(FileSystemEventHandler):
 
 # ---- FastAPI app ----
 app = FastAPI(lifespan=lifespan)
+
 clients = set()
 
 
