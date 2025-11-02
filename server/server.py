@@ -70,10 +70,10 @@ class FileChangeHandler(FileSystemEventHandler):
 
 
 app = FastAPI(lifespan=lifespan)
-#file_path = r"objects\parking.txt"
-#ront_path = r"pages\\"
-file_path = r"D:\studwork\3 мага\сем1\ИтиКБ\DB\Parking.txt"
-front_path = r"D:\studwork\3 мага\сем1\ИтиКБ\front"
+file_path = r"objects\parking.txt"
+front_path = r"pages\\"
+#file_path = r"D:\studwork\3 мага\сем1\ИтиКБ\DB\Parking.txt"
+#front_path = r"D:\studwork\3 мага\сем1\ИтиКБ\front"
 clients = set()
 
 
