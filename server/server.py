@@ -5,6 +5,7 @@ from watchdog.events import FileSystemEventHandler
 import asyncio
 import threading
 from contextlib import asynccontextmanager
+import os
 
 
 
@@ -44,7 +45,7 @@ async def lifespan(app: FastAPI):
     loop = asyncio.get_running_loop()
     handler = FileChangeHandler()
     observer = Observer()
-    observer.schedule(handler, file_path, recursive=False)
+    observer.schedule(handler, os.path.dirname(file_path), recursive=False)
     observer_thread = threading.Thread(target=observer.start, daemon=True)
     observer_thread.start()
 
@@ -70,7 +71,7 @@ class FileChangeHandler(FileSystemEventHandler):
 
 
 app = FastAPI(lifespan=lifespan)
-file_path = r"objects\parking.txt"
+file_path = os.path.abspath(r"objects\parking.txt")
 front_path = r"pages\\"
 #file_path = r"D:\studwork\3 мага\сем1\ИтиКБ\DB\Parking.txt"
 #front_path = r"D:\studwork\3 мага\сем1\ИтиКБ\front"
