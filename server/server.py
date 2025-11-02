@@ -44,7 +44,7 @@ async def lifespan(app: FastAPI):
     loop = asyncio.get_running_loop()
     handler = FileChangeHandler()
     observer = Observer()
-    observer.schedule(handler, r"D:\studwork\3 мага\сем1\ИтиКБ\DB", recursive=False)
+    observer.schedule(handler, file_path, recursive=False)
     observer_thread = threading.Thread(target=observer.start, daemon=True)
     observer_thread.start()
 
@@ -70,11 +70,12 @@ class FileChangeHandler(FileSystemEventHandler):
 
 
 app = FastAPI(lifespan=lifespan)
-file_path = r"D:\studwork\3 мага\сем1\ИтиКБ\DB\Parking.txt"
+file_path = r"objects\parking.txt"
+front_path = r"pages\\"
 clients = set()
 
 
-app.mount("/front", StaticFiles(directory=r"D:\studwork\3 мага\сем1\ИтиКБ\front", html=True), name="front")
+app.mount("/front", StaticFiles(directory=front_path, html=True), name="front")
 
 
 @app.websocket("/ws")
