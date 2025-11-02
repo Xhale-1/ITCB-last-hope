@@ -159,6 +159,4 @@ async def websocket_endpoint(ws: WebSocket):
 
 if __name__ == "__main__":
     import uvicorn
-    # The --reload flag is great for development, it automatically restarts
-    # the server when you save changes to the file.
-    uvicorn.run("server:app", host="0.0.0.0", port=801, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=801, reload=True)
